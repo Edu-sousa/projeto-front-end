@@ -1,19 +1,34 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/estaticos/navbar/Navbar';
 import Footer from './components/estaticos/footer/Footer';
 import './App.css';
 import Home from './paginas/home/Home';
+import Login from './paginas/login/Login';
 
-let nome = 'Eduardo'
 
 function App() {
   return (
-    <>
+    <Router>
       <Navbar />
-      <Home />
+      <Switch>
+          <Route exact path='/'>
+            <Login />
+          </Route>
+
+          <Route path='/login'>
+            <Login />
+          </Route>
+
+          <Route path='/home'>
+            <Home />
+          </Route>
+
+      </Switch>
       <Footer />
-    </>
+    </Router>
+
   );
 }
 
