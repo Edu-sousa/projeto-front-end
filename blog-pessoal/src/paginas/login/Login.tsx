@@ -25,7 +25,9 @@ function Login() {
                         <Box marginRight={1}>
                             <Typography variant='subtitle1' gutterBottom align='center'>Não tem uma conta?</Typography>
                         </Box>
+                        <Link to='./cadastroUsuario'>
                         <Typography variant='subtitle1' gutterBottom align='center' className='textos'>Cadastre-se</Typography>
+                        </Link>
                     </Box>
                 </Box>
             </Grid>

@@ -6,6 +6,7 @@ import Footer from './components/estaticos/footer/Footer';
 import './App.css';
 import Home from './paginas/home/Home';
 import Login from './paginas/login/Login';
+import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario'
 
 
 function App() {
@@ -23,6 +24,10 @@ function App() {
 
           <Route path='/home'>
             <Home />
+          </Route>
+
+          <Route path='/cadastroUsuario'>
+            <CadastroUsuario />
           </Route>
 
       </Switch>
