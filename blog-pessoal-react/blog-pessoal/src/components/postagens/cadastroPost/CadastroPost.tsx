@@ -47,8 +47,9 @@ function CadastroPost() {
         }
     }, [id])
 
+    // linha 58 - ao usar a api pessoal deixar escrito temas/ ao usar a api generation deixar escrito tema
     async function getTemas() {
-        await busca("/tema", setTemas, {
+        await busca("/temas", setTemas, {
             headers: {
                 'Authorization': token
             }

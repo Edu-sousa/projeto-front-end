@@ -7,6 +7,9 @@ import Tema from '../../../models/Tema';
 import { buscaId, post, put } from '../../../services/Service';
 
 
+
+// linhas 37, 59, 66, e 78 - ao usar a api pessoal deixar escrito temas/ ao usar a api generation deixar escrito tema
+
 function CadastroTema() {
     let history = useHistory();
     const { id } = useParams<{id: string}>();
@@ -31,7 +34,7 @@ function CadastroTema() {
     }, [id])
 
     async function findById(id: string) {
-        buscaId(`/tema/${id}`, setTema, {
+        buscaId(`/temas/${id}`, setTema, {
             headers: {
               'Authorization': token
             }
@@ -53,14 +56,14 @@ function CadastroTema() {
     
             if (id !== undefined) {
                 console.log(tema)
-                put(`/tema`, tema, setTema, {
+                put(`/temas`, tema, setTema, {
                     headers: {
                         'Authorization': token
                     }
                 })
                 alert('Tema atualizado com sucesso');
             } else {
-                post(`/tema`, tema, setTema, {
+                post(`/temas`, tema, setTema, {
                     headers: {
                         'Authorization': token
                     }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-    baseURL: 'https://otaldoblogpessoal.herokuapp.com'
+     baseURL: 'http://localhost:8080'
 });
 //'https://bloggeneration.herokuapp.com'
 //'https://otaldoblogpessoal.herokuapp.com'

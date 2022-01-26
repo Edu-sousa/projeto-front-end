@@ -8,6 +8,7 @@ import './App.css';
 import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
 import ListaTema from './components/temas/listatema/ListaTema';
 import ListaPostagem from './components/postagens/listapostagem/ListaPostagem';
+import CadastroTema from './components/temas/cadastroTema/CadastroTema';
 
 
 function App() {
@@ -39,6 +40,10 @@ function App() {
 
             <Route path='/posts'>
               <ListaPostagem />
+            </Route>
+
+            <Route path='/formularioTema'>
+              <CadastroTema />
             </Route>
 
 
