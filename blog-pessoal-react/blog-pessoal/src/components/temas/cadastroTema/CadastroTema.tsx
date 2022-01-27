@@ -2,18 +2,21 @@ import React, {useState, useEffect, ChangeEvent} from 'react'
 import { Container, Typography, TextField, Button } from "@material-ui/core"
 import {useHistory, useParams } from 'react-router-dom'
 import './CadastroTema.css';
-import useLocalStorage from 'react-use-localstorage';
 import Tema from '../../../models/Tema';
 import { buscaId, post, put } from '../../../services/Service';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 
 
-// linhas 37, 59, 66, e 78 - ao usar a api pessoal deixar escrito temas/ ao usar a api generation deixar escrito tema
+// linhas 40, 62, 69, - ao usar a api pessoal deixar escrito temas/ ao usar a api generation deixar escrito tema
 
 function CadastroTema() {
     let history = useHistory();
     const { id } = useParams<{id: string}>();
-    const [token, setToken] = useLocalStorage('token');
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+      );
     const [tema, setTema] = useState<Tema>({
         id: 0,
         descricao: ''
@@ -34,7 +37,7 @@ function CadastroTema() {
     }, [id])
 
     async function findById(id: string) {
-        buscaId(`/temas/${id}`, setTema, {
+        buscaId(`/tema/${id}`, setTema, {
             headers: {
               'Authorization': token
             }
@@ -56,14 +59,14 @@ function CadastroTema() {
     
             if (id !== undefined) {
                 console.log(tema)
-                put(`/temas`, tema, setTema, {
+                put(`/tema`, tema, setTema, {
                     headers: {
                         'Authorization': token
                     }
                 })
                 alert('Tema atualizado com sucesso');
             } else {
-                post(`/temas`, tema, setTema, {
+                post(`/tema`, tema, setTema, {
                     headers: {
                         'Authorization': token
                     }
@@ -75,7 +78,7 @@ function CadastroTema() {
         }
     
         function back() {
-            history.push('/temas')
+            history.push('/tema')
         }
   
     return (

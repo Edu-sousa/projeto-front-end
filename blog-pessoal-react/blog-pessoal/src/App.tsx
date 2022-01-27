@@ -9,10 +9,14 @@ import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
 import ListaTema from './components/temas/listatema/ListaTema';
 import ListaPostagem from './components/postagens/listapostagem/ListaPostagem';
 import CadastroTema from './components/temas/cadastroTema/CadastroTema';
+import {Provider} from 'react-redux';
+import store from './store/store';
 
 
 function App() {
   return (
+    <Provider store={store}>
+
     <Router>
       <Navbar />
         <Switch>
@@ -51,6 +55,8 @@ function App() {
         </Switch>
       <Footer />
     </Router>
+
+    </Provider>
   );
 }
 
