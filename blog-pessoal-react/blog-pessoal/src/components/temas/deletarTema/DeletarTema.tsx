@@ -6,8 +6,9 @@ import { buscaId, deleteId } from '../../../services/Service';
 import Tema from '../../../models/Tema';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import { toast } from 'react-toastify';
 
-// linhas 36 e 45 - ao usar a api pessoal deixar escrito temas/ ao usar a api generation deixar escrito tema
+// linhas 47 e 56 - ao usar a api pessoal deixar escrito temas/ ao usar a api generation deixar escrito tema
 
 
 function DeletarTema() {
@@ -20,7 +21,17 @@ function DeletarTema() {
 
   useEffect(() => {
       if (token == "") {
-          alert("Você precisa estar logado")
+        toast.error('Você precisa estar logado', {
+          position: "bottom-right",
+          autoClose: 1000,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "dark",
+          progress: undefined,
+          
+      });
           history.push("/login")
   
       }
@@ -47,7 +58,17 @@ function DeletarTema() {
                 'Authorization': token
               }
             });
-            alert('Tema deletado com sucesso');
+            toast.success('Tema deletado com sucesso', {
+              position: "bottom-right",
+              autoClose: 1000,
+              hideProgressBar: true,
+              closeOnClick: false,
+              pauseOnHover: false,
+              draggable: false,
+              theme: "dark",
+              progress: undefined,
+              
+          });
           }
         
           function nao() {

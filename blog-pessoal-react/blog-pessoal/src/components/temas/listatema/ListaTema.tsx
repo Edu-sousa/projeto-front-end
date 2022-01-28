@@ -7,6 +7,7 @@ import {useHistory} from 'react-router-dom';
 import { busca } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import { toast } from 'react-toastify';
 
 function ListaTema() {
   const [temas, setTemas] = useState<Tema[]>([])
@@ -17,12 +18,22 @@ function ListaTema() {
 
   useEffect(()=>{
     if(token == ''){
-      alert("Você precisa estar logado")
+      toast.error('Você precisa estar logado', {
+        position: "bottom-right",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "dark",
+        progress: undefined,
+        
+    });
       history.push("/login")
     }
   }, [token])
 
-// linha 28 - ao usar a api pessoal deixar escrito temas/ ao usar a api generation deixar escrito tema
+// linha 39 - ao usar a api pessoal deixar escrito temas/ ao usar a api generation deixar escrito tema
 
   async function getTema() {
     await busca("/tema", setTemas, {

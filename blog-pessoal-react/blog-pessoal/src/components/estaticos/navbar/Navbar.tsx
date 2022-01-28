@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { useDispatch } from "react-redux";
 import { addToken } from '../../../store/tokens/actions';
+import { toast } from 'react-toastify';
 
 function Navbar() {
     const token = useSelector<TokenState, TokenState["tokens"]>(
@@ -15,9 +16,26 @@ function Navbar() {
     let history = useHistory();
     const dispatch = useDispatch();
     
+    /*
     function goLogout(){
         dispatch(addToken(''));
         alert("Usuário deslogado")
+        history.push('/login')
+    }*/
+
+    function goLogout(){
+        dispatch(addToken(''));
+        toast.info('Usuário deslogado', {
+            position: "bottom-right",
+            autoClose: 1000,
+            hideProgressBar: true,
+            closeOnClick: false,
+            pauseOnHover: false,
+            draggable: false,
+            theme: "dark",
+            progress: undefined,
+            
+        });
         history.push('/login')
     }
 
